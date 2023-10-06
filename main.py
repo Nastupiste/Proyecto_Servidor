@@ -4,6 +4,7 @@ import json
 # Para acceder a una url.
 import requests
 # Para poder tener ventana.
+
 import tkinter as tk
 from tkinter import *
 
@@ -29,7 +30,6 @@ scrol_bar.config(command=txt.yview)
 txt.insert('end', texto)
 
 ventana.mainloop()
-
 
 # Si quisiera imprimir los datos obtenidos en formato json:
 # print(json.dumps(datos, indent=4, sort_keys=True))
