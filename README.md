@@ -1,5 +1,9 @@
 # Proyecto_Servidor
 
+requisitos previos: 
+- tener instalado python3-tk
+- sudo apt-get install python3-tk
+
 Proyecto de investigación para la asignatura de Desarrollo de Entorno Servidor para el grado superior de FP DAW.
 
 1. Nos conectaremos con una página web:
