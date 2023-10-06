@@ -6,6 +6,10 @@ from tkinter import *
 # Convertimos a texto los datos:
 texto = json.dumps(datos, ensure_ascii= False, indent=2)
 ventana = tk.Tk()
+# Creamos una nueva ventana:
+# Convertimos a texto los datos:
+texto = json.dumps(datos, ensure_ascii= False, indent=2)
+ventana = tk.Tk()
 
 # Añado un elemento scrollBar a la ventana:
 scrol_bar= tk.Scrollbar(ventana)
