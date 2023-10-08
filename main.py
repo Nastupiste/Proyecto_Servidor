@@ -8,6 +8,13 @@ import requests
 import tkinter as tk
 from tkinter import *
 
+# Interacción con el usuario
+print("Welcome to the Trivia´s API quest!")
+
+numPreguntas=int(input("How many questions do yo want to answer?\n(from 1 to 50):"))
+
+while numPreguntas<1 or numPreguntas>50:
+    numPreguntas=int(input("How many questions do yo want to answer?\n(from 1 to 50):"))
 
 # Hacemos la solicitud de los datos a la url.
 
