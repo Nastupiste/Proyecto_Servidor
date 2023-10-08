@@ -3,22 +3,24 @@ import json
 
 # Para acceder a una url.
 import requests
-# Para poder tener ventana.
 
+# Para generar un número aleatorio
+import random
+
+# Para poder tener ventana.
 import tkinter as tk
 from tkinter import *
 
 # Interacción con el usuario
 print("Welcome to the Trivia´s API quest!")
-
 numPreguntas=int(input("How many questions do yo want to answer?\n(from 1 to 50):"))
-
 while numPreguntas<1 or numPreguntas>50:
     numPreguntas=int(input("How many questions do yo want to answer?\n(from 1 to 50):"))
 
 # Hacemos la solicitud de los datos a la url.
+categoria=int(random.randint(9,30))
 
-API_url="https://opentdb.com/api.php?amount=24&category=22"
+API_url=f"https://opentdb.com/api.php?amount={numPreguntas}+&category={categoria}"
 respuesta=requests.get(API_url)
 
 # Convertimos el resultado de llamada a la API "JSON" a una estructura de datos manejable
@@ -26,6 +28,13 @@ datos=json.loads(respuesta.text)
 # Comprobamos que la variable datos es un diccionario.
 #print(type(datos))
 
+# Con este bucle aseguramos que el JSON que devuelve el url no esté vacío
+while datos["response_code"]==1:
+    categoria=int(random.randint(9,30))
+    API_url="https://opentdb.com/api.php?amount={numPreguntas}&category={categoria}"
+    respuesta=requests.get(API_url)
+
+datos=json.loads(respuesta.text)
 # Creamos variable para almacenar las preguntas que se encuentran en el diccionario.
 preguntas=datos["results"]
 # Comprobamos que la variable preguntas es una lista de diccionarios:
