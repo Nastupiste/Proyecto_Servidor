@@ -1,3 +1,4 @@
+import html
 # Para manipular JSON.
 import json
 # Para acceder a una url.
@@ -22,18 +23,16 @@ respuesta=requests.get(API_url)
 
 # Convertimos el resultado de llamada a la API "JSON" a una estructura de datos manejable
 datos=json.loads(respuesta.text)
+datos_txt=json.dumps(datos,ensure_ascii=False)
+
 # Comprobamos que la variable datos es un diccionario.
-#print(type(datos))
+# HTML entities 
+datos_pro=html.unescape(datos_txt)
+datosUTF8=json.loads(datos_pro)
+print(type(datosUTF8))
 
-# Con este bucle aseguramos que el JSON que devuelve el url no esté vacío
-while datos["response_code"]==1:
-    categoria=int(random.randint(9,30))
-    API_url="https://opentdb.com/api.php?amount={numPreguntas}&category={categoria}"
-    respuesta=requests.get(API_url)
-
-datos=json.loads(respuesta.text)
 # Creamos variable para almacenar las preguntas que se encuentran en el diccionario.
-preguntas=datos["results"]
+preguntas=datosUTF8["results"]
 # Comprobamos que la variable preguntas es una lista de diccionarios:
 #print(type(preguntas))
 
@@ -43,9 +42,9 @@ aciertos=0
 # En la cada vuelta accedemos a una pregunta que contienen respuestas buenas y malas
 print()
 print("The category is "+preguntas[0]["category"])
-print()
 for pregunta in preguntas:
     opciones=[]
+    print()
     print(pregunta["question"])
     print("Options: ")
     # Este for añade las respuestas malas a una lista de opciones
@@ -56,7 +55,7 @@ for pregunta in preguntas:
     
     # Las reordenamos para sea un poco más aleatório
     random.shuffle(opciones)
-    print(opciones)
+   
     # imprimimos la respuesta por pantalla. ¡Hasta aquí genial! 
     contador=0
     for respuesta in range(len(opciones)):
@@ -64,18 +63,20 @@ for pregunta in preguntas:
         print(f"{contador} {opciones[respuesta]}")
 
     # recogemos la respuesta del usuario y realizo la comprobación
-    respuestaUsuario=int(input("Enter the number of your answer: "))-1
+    respuestaUsuario=-1
+    while respuestaUsuario<1 or respuestaUsuario>4:
+        respuestaUsuario=int(input("Enter the number of your answer: "))-1
     
     if opciones[respuestaUsuario]==pregunta["correct_answer"]:
         aciertos+=1
     else:
         fallos+=1
 
-#resultados=(numPreguntas-fallos)
-
+porcentaje_Acierto = (aciertos/numPreguntas) * 100
+print()
 print(f"You had {aciertos} correct answers.")
 print(f"You had {fallos} incorrect answers.")
-
+print(f"Your final score is {porcentaje_Acierto}")
 
 
 
