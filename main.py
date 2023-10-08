@@ -62,8 +62,13 @@ for pregunta in preguntas:
         print(f"{contador} {opciones[respuesta]}")
 
     # recogemos la respuesta del usuario y realizo la comprobación
-    respuestaUsuario=int(input("Enter the number of your answer: "))-1
     
+    respuestaUsuario=-1
+
+    while respuestaUsuario<0 or respuestaUsuario>4:
+        respuestaUsuario=int(input("Enter the number of your answer: "))
+    
+    respuestaUsuario-=1
     if opciones[respuestaUsuario]==pregunta["correct_answer"]:
         aciertos+=1
     else:
