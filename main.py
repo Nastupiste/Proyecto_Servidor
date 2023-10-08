@@ -1,4 +1,3 @@
-import html
 # Para manipular JSON.
 import json
 # Para acceder a una url.
@@ -23,16 +22,16 @@ respuesta=requests.get(API_url)
 
 # Convertimos el resultado de llamada a la API "JSON" a una estructura de datos manejable
 datos=json.loads(respuesta.text)
-datos_txt=json.dumps(datos,ensure_ascii=False)
 
-# Comprobamos que la variable datos es un diccionario.
-# HTML entities 
-datos_pro=html.unescape(datos_txt)
-datosUTF8=json.loads(datos_pro)
-print(type(datosUTF8))
+# La URL podría devolvernos un JSON, de momento lo voy a controlar con un while.
+while datos["response_code"] == 1:
+    categoria = int(random.randint(9, 30))
+    API_url = f"https://opentdb.com/api.php?amount={numPreguntas}&category={categoria}"
+    respuesta = requests.get(API_url)
+    datos = json.loads(respuesta.text)
 
 # Creamos variable para almacenar las preguntas que se encuentran en el diccionario.
-preguntas=datosUTF8["results"]
+preguntas=datos["results"]
 # Comprobamos que la variable preguntas es una lista de diccionarios:
 #print(type(preguntas))
 
@@ -63,9 +62,7 @@ for pregunta in preguntas:
         print(f"{contador} {opciones[respuesta]}")
 
     # recogemos la respuesta del usuario y realizo la comprobación
-    respuestaUsuario=-1
-    while respuestaUsuario<1 or respuestaUsuario>4:
-        respuestaUsuario=int(input("Enter the number of your answer: "))-1
+    respuestaUsuario=int(input("Enter the number of your answer: "))-1
     
     if opciones[respuestaUsuario]==pregunta["correct_answer"]:
         aciertos+=1
