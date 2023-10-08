@@ -41,8 +41,9 @@ preguntas=datos["results"]
 fallos=0
 aciertos=0
 # En la cada vuelta accedemos a una pregunta que contienen respuestas buenas y malas
-
-print("The category is :"+preguntas[0]["category"])
+print()
+print("The category is "+preguntas[0]["category"])
+print()
 for pregunta in preguntas:
     opciones=[]
     print(pregunta["question"])
@@ -55,7 +56,7 @@ for pregunta in preguntas:
     
     # Las reordenamos para sea un poco más aleatório
     random.shuffle(opciones)
-    
+    print(opciones)
     # imprimimos la respuesta por pantalla. ¡Hasta aquí genial! 
     contador=0
     for respuesta in range(len(opciones)):
@@ -63,17 +64,17 @@ for pregunta in preguntas:
         print(f"{contador} {opciones[respuesta]}")
 
     # recogemos la respuesta del usuario y realizo la comprobación
-    respuesta_Usuario=int(input("Enter the number of your answer: "))
-    if opciones.index[respuesta_Usuario]==pregunta["correct_answer"]:
+    respuestaUsuario=int(input("Enter the number of your answer: "))-1
+    
+    if opciones[respuestaUsuario]==pregunta["correct_answer"]:
         aciertos+=1
     else:
         fallos+=1
 
+#resultados=(numPreguntas-fallos)
+
 print(f"You had {aciertos} correct answers.")
 print(f"You had {fallos} incorrect answers.")
-
-
-
 
 
 
