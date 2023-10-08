@@ -1,18 +1,15 @@
 # Para manipular JSON.
 import json
-
 # Para acceder a una url.
 import requests
-
 # Para generar un número aleatorio
 import random
-
 # Para poder tener ventana.
 import tkinter as tk
 from tkinter import *
 
 # Interacción con el usuario
-print("Welcome to the Trivia´s API quest!")
+print("Welcome to the Trivia´s API quest!")     
 numPreguntas=int(input("How many questions do yo want to answer?\n(from 1 to 50):"))
 while numPreguntas<1 or numPreguntas>50:
     numPreguntas=int(input("How many questions do yo want to answer?\n(from 1 to 50):"))
@@ -44,6 +41,8 @@ preguntas=datos["results"]
 fallos=0
 aciertos=0
 # En la cada vuelta accedemos a una pregunta que contienen respuestas buenas y malas
+
+print("The category is :"+preguntas[0]["category"])
 for pregunta in preguntas:
     opciones=[]
     print(pregunta["question"])
@@ -55,7 +54,7 @@ for pregunta in preguntas:
     opciones.append(pregunta["correct_answer"])
     
     # Las reordenamos para sea un poco más aleatório
-    opciones.sort
+    random.shuffle(opciones)
     
     # imprimimos la respuesta por pantalla. ¡Hasta aquí genial! 
     contador=0
@@ -63,10 +62,16 @@ for pregunta in preguntas:
         contador=contador+1
         print(f"{contador} {opciones[respuesta]}")
 
-    # recogemos la respuesta del usuario ¿Como hago la comprobación?
+    # recogemos la respuesta del usuario y realizo la comprobación
     respuesta_Usuario=int(input("Enter the number of your answer: "))
-    
-    #if respuesta_Usuario==ni idea
+    if opciones.index[respuesta_Usuario]==pregunta["correct_answer"]:
+        aciertos+=1
+    else:
+        fallos+=1
+
+print(f"You had {aciertos} correct answers.")
+print(f"You had {fallos} incorrect answers.")
+
 
 
 
