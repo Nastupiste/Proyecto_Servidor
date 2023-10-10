@@ -65,7 +65,7 @@ for pregunta in preguntas:
     
     respuestaUsuario=-1
 
-    while respuestaUsuario<0 or respuestaUsuario>4:
+    while respuestaUsuario<=0 or respuestaUsuario>len(opciones):
         respuestaUsuario=int(input("Enter the number of your answer: "))
     
     respuestaUsuario-=1
