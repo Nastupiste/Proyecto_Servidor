@@ -8,6 +8,34 @@ import random
 import tkinter as tk
 from tkinter import *
 
+#Funciones
+def respuestaValida(opciones):
+    r_incorrecta=True
+    while r_incorrecta:
+        try:
+            respuesta=int(input("Enter the number of your answer: "))
+            if 1<=respuesta<=opciones:
+                r_incorrecta=False
+                return respuesta
+            else:
+                print("Invalid answer. Please choose a number between 1 and", opciones)
+        except ValueError:
+            print("Sorry, you should write a valid answer: ")
+
+def validarNumPreguntas():
+    r_incorrecta=True
+    while r_incorrecta:
+        try:
+            respuesta=int(input("Enter the number of your answer: "))
+            if 1<=respuesta<=50:
+                r_incorrecta=False
+                return respuesta
+            else:
+                print("Invalid answer. Please choose a number between 1 and", opciones)
+        except ValueError:
+            print("Sorry, you should write a valid answer: ")
+
+
 # Interacción con el usuario
 print("Welcome to the Trivia´s API quest!")     
 numPreguntas=int(input("How many questions do yo want to answer?\n(from 1 to 50):"))
@@ -62,12 +90,8 @@ for pregunta in preguntas:
         print(f"{contador} {opciones[respuesta]}")
 
     # recogemos la respuesta del usuario y realizo la comprobación
-    
-    respuestaUsuario=-1
-
-    while respuestaUsuario<=0 or respuestaUsuario>len(opciones):
-        respuestaUsuario=int(input("Enter the number of your answer: "))
-    
+    # prevengo que la respuesta no sea un carácter o un número mayor que las opciones disponibles.
+    respuestaUsuario=respuestaValida(len(opciones))
     respuestaUsuario-=1
     if opciones[respuestaUsuario]==pregunta["correct_answer"]:
         aciertos+=1
