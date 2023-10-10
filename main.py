@@ -35,7 +35,6 @@ def validarNumPreguntas():
         except ValueError:
             print("Sorry, you should enter a number between 1 and 50. ")
 
-
 # Interacción con el usuario
 print()
 print("Welcome to the Trivia´s API quest!")     
