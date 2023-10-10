@@ -100,6 +100,11 @@ for pregunta in preguntas:
 
 porcentaje_Acierto = (aciertos/numPreguntas) * 100
 print()
+if porcentaje_Acierto>50:
+    print("Well done! You have passed the quiz!")
+else:
+    print("You lose... Don't worry, you'll get them next time!")
+print()
 print(f"You had {aciertos} correct answers.")
 print(f"You had {fallos} incorrect answers.")
 print(f"Your final score is {porcentaje_Acierto}")
