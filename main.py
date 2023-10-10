@@ -100,7 +100,7 @@ for pregunta in preguntas:
 
 porcentaje_Acierto = (aciertos/numPreguntas) * 100
 print()
-if porcentaje_Acierto>50:
+if porcentaje_Acierto>=50:
     print("Well done! You have passed the quiz!")
 else:
     print("You lose... Don't worry, you'll get them next time!")
