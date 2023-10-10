@@ -27,7 +27,7 @@ def validarNumPreguntas():
     while True:
         try:
             respuesta=int(entry.get())
-            numPreguntas=respuesta
+            #self.value=respuesta
             if 1<=respuesta<=50:
                 return respuesta
             else:
@@ -46,12 +46,11 @@ label = ttk.Label(root_window, text="How many questions do yo want to answer?\n(
 label.pack()
 # Recogida de datos
 
-entry=ttk.Entry()
+entry=ttk.Entry(root_window)
 entry.pack()
 submit_button = ttk.Button(root_window, text="Enviar", command=validarNumPreguntas)
 submit_button.pack()
-
-print("Preguntas: "+numPreguntas)
+#print(self.value)
 
 # Hacemos la solicitud de los datos a la url.
 categoria=int(random.randint(9,30))

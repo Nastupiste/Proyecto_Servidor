@@ -1,30 +1,38 @@
 
-from tkinter import *
+import tkinter as tk
 from tkinter import ttk
 
 def validarNumPreguntas():
     while True:
         try:
-            respuesta=int(entry.get())
-            if 1<=respuesta<=50:
+            respuesta = int(entry.get())
+            if 1 <= respuesta <= 50:
                 return respuesta
             else:
-                label = ttk.Label(root_window, text="Invalid answer. Please choose a number between 1 and 50.")
+                label.config(text="Respuesta inválida. Por favor, elija un número entre 1 y 50.")
         except ValueError:
-            label = ttk.Label(root_window, text="Sorry, you should enter a number between 1 and 50.")
+            label.config(text="Lo siento, debe ingresar un número válido.")
 
-
-root_window=Tk()
+# Crear ventana principal
+root_window = tk.Tk()
 root_window.minsize(width=500, height=500)
-root_window.title("Welcome to the Trivia´s API quest!")
+root_window.title("Bienvenido a la Trivia API Quest")
 
-# Interacción con el usuario
-label = ttk.Label(root_window, text="How many questions do yo want to answer?\n(from 1 to 50):")
+# Etiqueta
+label = ttk.Label(root_window, text="¿Cuántas preguntas desea responder?\n(De 1 a 50):")
 label.pack()
+
 # Recogida de datos
-entry=ttk.Entry()
+entry = ttk.Entry()
 entry.pack()
+
+# Botón para enviar y usar validarNumPreguntas como comando
 submit_button = ttk.Button(root_window, text="Enviar", command=validarNumPreguntas)
 submit_button.pack()
-#numPreguntas=validarNumPreguntas(entry)
+
+# Iniciar la ventana
 root_window.mainloop()
+
+# Después de cerrar la ventana, puedes acceder al valor devuelto por la función.
+valor_elegido = validarNumPreguntas()
+print("El valor elegido por el usuario es:", valor_elegido)
