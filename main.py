@@ -26,21 +26,19 @@ def validarNumPreguntas():
     r_incorrecta=True
     while r_incorrecta:
         try:
-            respuesta=int(input("Enter the number of your answer: "))
+            respuesta=int(input("How many questions do yo want to answer?\n(from 1 to 50):"))
             if 1<=respuesta<=50:
                 r_incorrecta=False
                 return respuesta
             else:
-                print("Invalid answer. Please choose a number between 1 and", opciones)
+                print("Invalid answer. Please choose a number between 1 and 50.")
         except ValueError:
-            print("Sorry, you should write a valid answer: ")
+            print("Sorry, you should enter a number between 1 and 50. ")
 
 
 # Interacción con el usuario
 print("Welcome to the Trivia´s API quest!")     
-numPreguntas=int(input("How many questions do yo want to answer?\n(from 1 to 50):"))
-while numPreguntas<1 or numPreguntas>50:
-    numPreguntas=int(input("How many questions do yo want to answer?\n(from 1 to 50):"))
+numPreguntas=validarNumPreguntas()
 
 # Hacemos la solicitud de los datos a la url.
 categoria=int(random.randint(9,30))
