@@ -37,6 +37,7 @@ def validarNumPreguntas():
 
 
 # Interacción con el usuario
+print()
 print("Welcome to the Trivia´s API quest!")     
 numPreguntas=validarNumPreguntas()
 
@@ -89,6 +90,7 @@ for pregunta in preguntas:
 
     # recogemos la respuesta del usuario y realizo la comprobación
     # prevengo que la respuesta no sea un carácter o un número mayor que las opciones disponibles.
+    respuestaUsuario=-1
     respuestaUsuario=respuestaValida(len(opciones))
     respuestaUsuario-=1
     if opciones[respuestaUsuario]==pregunta["correct_answer"]:
