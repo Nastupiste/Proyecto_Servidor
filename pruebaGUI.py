@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 import tkinter as tk
 from tkinter import ttk
 
@@ -36,3 +37,12 @@ root_window.mainloop()
 # Después de cerrar la ventana, puedes acceder al valor devuelto por la función.
 valor_elegido = validarNumPreguntas()
 print("El valor elegido por el usuario es:", valor_elegido)
+=======
+import pyQt
+
+QtGui.QMessageBox.question(self, 
+         'Message',
+         "Are you sure to quit?",
+         QtGui.QMessageBox.Yes, 
+         QtGui.QMessageBox.No)
+>>>>>>> parent of 7bc08f9 (preparo inicio gui)
