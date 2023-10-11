@@ -1,3 +1,5 @@
 requests~=2.31.0
 tk~=0.1.0
-python3-tk~
+PyQt5~=5.15.9
+PyQt5-Qt5~=5.15.2
+PyQt5-sip~=12.12.2
