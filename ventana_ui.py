@@ -17,6 +17,19 @@ class Ui_MainWindow(object):
         MainWindow.resize(800, 600)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
+        self.etiquetaSaludo = QtWidgets.QLabel(self.centralwidget)
+        self.etiquetaSaludo.setGeometry(QtCore.QRect(140, 50, 491, 71))
+        self.etiquetaSaludo.setText("")
+        self.etiquetaSaludo.setObjectName("etiquetaSaludo")
+        self.etiquetaNumPregunta = QtWidgets.QLabel(self.centralwidget)
+        self.etiquetaNumPregunta.setGeometry(QtCore.QRect(160, 170, 531, 71))
+        self.etiquetaNumPregunta.setObjectName("etiquetaNumPregunta")
+        self.spinBoxNumPreguntas = QtWidgets.QSpinBox(self.centralwidget)
+        self.spinBoxNumPreguntas.setGeometry(QtCore.QRect(230, 310, 61, 41))
+        self.spinBoxNumPreguntas.setObjectName("spinBoxNumPreguntas")
+        self.botonConfirmar = QtWidgets.QPushButton(self.centralwidget)
+        self.botonConfirmar.setGeometry(QtCore.QRect(430, 330, 93, 28))
+        self.botonConfirmar.setObjectName("botonConfirmar")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 26))
@@ -32,6 +45,8 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Trivia´s API quest"))
+        self.etiquetaNumPregunta.setText(_translate("MainWindow", "TextLabel"))
+        self.botonConfirmar.setText(_translate("MainWindow", "PushButton"))
 
 
 if __name__ == "__main__":
