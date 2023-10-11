@@ -42,6 +42,7 @@ root_window.minsize(width=500, height=500)
 root_window.title("Welcome to the Trivia´s API quest!")
 
 
+
 # Interacción con el usuario
 label = ttk.Label(root_window, text="How many questions do yo want to answer?\n(from 1 to 50):")
 label.pack()
