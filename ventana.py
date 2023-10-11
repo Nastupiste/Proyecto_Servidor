@@ -15,16 +15,20 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         numPreguntas=self.spinBoxNumPreguntas.toPlainText()
         categoria=generaCategoria()
         datos=llamadaApi(numPreguntas,categoria)
-        ##falta genera cuestionario    
+        generaCuestionario(datos,numPreguntas)   
 
-if __name__ == "__main__":
+"""if __name__ == "__main__":
     try:
         app = QtWidgets.QApplication([])
         window = MainWindow()
         window.show()
         app.exec_()
     except Exception as e:
-        print(f"An error occurred: {str(e)}")
+        print(f"An error occurred: {str(e)}")"""
 
- 
+if __name__ == "__main__":
+    app = QtWidgets.QApplication([])
+    window = MainWindow()
+    window.show()
+    app.exec_()
 
