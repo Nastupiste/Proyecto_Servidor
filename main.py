@@ -11,7 +11,7 @@ def respuestaValida(self,numero):
     r_incorrecta=True
     while r_incorrecta:
         try:
-            respuesta=int(self.spinBoxNumPreguntas.value())
+            respuesta=int(self.spinBoxNumRespuesta.value())
             if 1<=respuesta<=numero:
                 r_incorrecta=False
                 return respuesta
@@ -83,16 +83,14 @@ def llamadaApi(numPreguntas,categoria):
 # prevengo que la respuesta no sea un carácter o un número mayor que las opciones disponibles.
 
 def respuestaUsuario(self, opciones, pregunta):
-    fallos=0
-    aciertos=0
     respuestaUsuario=-1
     print(opciones)
     respuestaUsuario=respuestaValida(self,len(opciones))
     respuestaUsuario-=1
     if opciones[respuestaUsuario]==pregunta["correct_answer"]:
-        aciertos+=1
+        self.aciertos+=1
     else:
-        fallos+=1
+        self.fallos+=1
 
 
 def calculaResultado(aciertos,fallos,numPreguntas):    

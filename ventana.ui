@@ -56,7 +56,7 @@
      <string>Enviar Respuesta</string>
     </property>
    </widget>
-   <widget class="QSpinBox" name="spinBox">
+   <widget class="QSpinBox" name="spinBoxNumRespuesta">
     <property name="geometry">
      <rect>
       <x>940</x>
@@ -75,12 +75,64 @@
      <number>4</number>
     </property>
    </widget>
+   <widget class="QTextBrowser" name="textAreaPregunta">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>290</y>
+      <width>1071</width>
+      <height>192</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>20</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textAreaRespuestas">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>490</y>
+      <width>541</width>
+      <height>192</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="texAreaResultados">
+    <property name="geometry">
+     <rect>
+      <x>825</x>
+      <y>10</y>
+      <width>291</width>
+      <height>192</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>14</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+   </widget>
    <widget class="QLabel" name="eTitulo">
     <property name="geometry">
      <rect>
       <x>40</x>
       <y>20</y>
-      <width>1051</width>
+      <width>781</width>
       <height>161</height>
      </rect>
     </property>
@@ -95,27 +147,6 @@
     </property>
     <property name="text">
      <string>Prueba</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="ePregunta">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>350</y>
-      <width>1071</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Trebuchet MS</family>
-      <pointsize>22</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Pregunta</string>
     </property>
    </widget>
    <widget class="QLabel" name="eSubTitulo">
@@ -134,27 +165,6 @@
     </property>
     <property name="text">
      <string>Categoria</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="eRespuestas">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>450</y>
-      <width>881</width>
-      <height>231</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Trebuchet MS</family>
-      <pointsize>20</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Respuestas</string>
     </property>
    </widget>
   </widget>
