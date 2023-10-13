@@ -13,18 +13,17 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.eSubTitulo.setText("How many questions do yo want to answer?\n(from 1 to 50):")
         self.bConfirmar.clicked.connect(self.Confirmar)
         
-        self.cargaPreguntas()
-
+        
+        
     
     def Confirmar(self):
         cuestionario.set_numPreguntas(int(self.spinBoxNumPreguntas.value()))
-     
         cuestionario.set_categoria(generaCategoria())
-     
         cuestionario.set_datos(llamadaApi(cuestionario.get_numPreguntas(),cuestionario.get_categoria()))
+        self.cargaPreguntas()
+        self.bConfirmar.setEnabled(False)
         
     def cargaPreguntas(self):
-        print(cuestionario.get_datos())
 
         preguntas=cuestionario.get_datos()["results"]
 
@@ -44,7 +43,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             for respuesta in range(len(opciones)):
                 contador=contador+1
                 cadenaOpciones+=f"{contador} {opciones[respuesta]}\n"
-            self.eRespuestas.setText("cadenaOpciones")
+            self.eRespuestas.setText(cadenaOpciones)
+
+        
 
             respuestaUsuario(self,opciones,pregunta)
 

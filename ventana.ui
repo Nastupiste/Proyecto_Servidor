@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1124</width>
+    <width>1129</width>
     <height>707</height>
    </rect>
   </property>
@@ -17,10 +17,10 @@
    <widget class="QSpinBox" name="spinBoxNumPreguntas">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>590</y>
-      <width>131</width>
-      <height>81</height>
+      <x>940</x>
+      <y>220</y>
+      <width>61</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="alignment">
@@ -33,62 +33,129 @@
    <widget class="QPushButton" name="bConfirmar">
     <property name="geometry">
      <rect>
-      <x>560</x>
-      <y>580</y>
-      <width>301</width>
-      <height>91</height>
+      <x>1010</x>
+      <y>220</y>
+      <width>101</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
      <string>Aceptar</string>
     </property>
    </widget>
-   <widget class="QSplitter" name="splitter">
+   <widget class="QPushButton" name="BotonConfRespuesta">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>20</y>
-      <width>1111</width>
-      <height>561</height>
+      <x>1010</x>
+      <y>540</y>
+      <width>101</width>
+      <height>41</height>
      </rect>
     </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
+    <property name="text">
+     <string>Enviar Respuesta</string>
     </property>
-    <widget class="QLabel" name="eTitulo">
-     <property name="font">
-      <font>
-       <family>Source Code Pro Black</family>
-       <pointsize>26</pointsize>
-       <weight>75</weight>
-       <italic>true</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Prueba</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="eSubTitulo">
-     <property name="font">
-      <font>
-       <pointsize>20</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Categoria</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="ePregunta">
-     <property name="text">
-      <string>Pregunta</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="eRespuestas">
-     <property name="text">
-      <string>Respuestas</string>
-     </property>
-    </widget>
+   </widget>
+   <widget class="QSpinBox" name="spinBox">
+    <property name="geometry">
+     <rect>
+      <x>940</x>
+      <y>540</y>
+      <width>61</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="maximum">
+     <number>4</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="eTitulo">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>20</y>
+      <width>1051</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Source Code Pro Black</family>
+      <pointsize>26</pointsize>
+      <weight>75</weight>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Prueba</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="ePregunta">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>350</y>
+      <width>1071</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>22</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Pregunta</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="eSubTitulo">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>200</y>
+      <width>881</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Categoria</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="eRespuestas">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>450</y>
+      <width>881</width>
+      <height>231</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Respuestas</string>
+    </property>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

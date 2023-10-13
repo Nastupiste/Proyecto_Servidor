@@ -7,16 +7,16 @@ import random
 # Para poder tener ventana.
 
 #Funciones
-def respuestaValida(self,opciones):
+def respuestaValida(self,numero):
     r_incorrecta=True
     while r_incorrecta:
         try:
             respuesta=int(self.spinBoxNumPreguntas.value())
-            if 1<=respuesta<=opciones:
+            if 1<=respuesta<=numero:
                 r_incorrecta=False
                 return respuesta
             else:
-                print("Invalid answer. Please choose a number between 1 and", opciones)
+                print("Invalid answer. Please choose a number between 1 and", numero)
         except ValueError:
             print("Sorry, you should write a valid answer: ")
 def validarNumPreguntas():
@@ -55,8 +55,8 @@ def llamadaApi(numPreguntas,categoria):
         datos = json.loads(respuesta.text)
         print(type(datos))
     return datos
-"""
-def generaCuestionario(datos,numPreguntas):
+
+"""def generaCuestionario(datos,numPreguntas):
     preguntas=datos["results"]
     cadenaTotal=""
     cadenaCategoria="The category is "+preguntas[0]["category"]+"\n"
@@ -77,16 +77,17 @@ def generaCuestionario(datos,numPreguntas):
             cadenaOpciones+=f"{contador} {opciones[respuesta]}\n"
 
     cadenaTotal=cadenaCategoria+cadenaPregunta+cadenaOpciones        
-    return cadenaTotal,opciones
-"""
+    return cadenaTotal,opciones"""
+
 # recogemos la respuesta del usuario y realizo la comprobación
 # prevengo que la respuesta no sea un carácter o un número mayor que las opciones disponibles.
 
-def respuestaUsuario(self,opciones,pregunta):
+def respuestaUsuario(self, opciones, pregunta):
     fallos=0
     aciertos=0
     respuestaUsuario=-1
-    respuestaUsuario=respuestaValida(len(opciones))
+    print(opciones)
+    respuestaUsuario=respuestaValida(self,len(opciones))
     respuestaUsuario-=1
     if opciones[respuestaUsuario]==pregunta["correct_answer"]:
         aciertos+=1
