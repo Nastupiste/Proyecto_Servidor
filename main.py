@@ -1,44 +1,120 @@
-# Para manipular JSON.
-import json
-# Para acceder a una url.
-import requests
-# Para generar un número aleatorio
-import random
+from ventana_ui import *
+from utilities import *
+from Cuestionario import *
+import html
 
-# Generamos una categoría random para el url.
+cuestionario=Cuestionario()
 
-def generaCategoria():
-    categoria=int(random.randint(9,30))
-    return categoria
+class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
+    def __init__(self, *args, **kwargs):
+        QtWidgets.QMainWindow.__init__(self, *args, **kwargs)
+        self.setupUi(self)
+        
+        self.respuestaElegida=""
+        self.aciertos=0
+        self.errores=0
+        
+        self.eTitulo.setText("Welcome to the Trivia´s API quest!")
+        self.eSubTitulo.setText("How many questions do yo want to answer?\n(from 1 to 50):")
+        self.bConfirmar.clicked.connect(self.confirmar)
+        self.BotonRespuesta1.clicked.connect(self.boton1Pulsado)
+        self.BotonRespuesta2.clicked.connect(self.boton2Pulsado)
+        self.BotonRespuesta3.clicked.connect(self.boton3Pulsado)
+        self.BotonRespuesta4.clicked.connect(self.boton4Pulsado)
 
-# Hacemos la solicitud de los datos a la url.
+        self.BotonRespuesta1.setEnabled(False)
+        self.BotonRespuesta2.setEnabled(False)
+        self.BotonRespuesta3.setEnabled(False)
+        self.BotonRespuesta4.setEnabled(False)
 
-def llamadaApi(numPreguntas,categoria):
-    API_url=f"https://opentdb.com/api.php?amount={numPreguntas}+&category={categoria}"
-    respuesta=requests.get(API_url)
+    def arreglaStrings(self,string):
+        return html.unescape(string)
 
-# Convertimos el resultado de llamada a la API "JSON" a una estructura de datos manejable
+    def confirmar(self):
+        cuestionario.set_numPreguntas(int(self.spinBoxNumPreguntas.value()))
+        self.spinBoxNumPreguntas.setEnabled(False)
+        cuestionario.set_categoria(generaCategoria())
+        cuestionario.set_datos(llamadaApi(cuestionario.get_numPreguntas(),cuestionario.get_categoria()))
+        self.bConfirmar.setEnabled(False)
+        self.BotonRespuesta1.setEnabled(True)
+        self.BotonRespuesta2.setEnabled(True)
+        self.BotonRespuesta3.setEnabled(True)
+        self.BotonRespuesta4.setEnabled(True)
+        self.preguntas=cuestionario.get_datos()["results"]
+        self.eSubTitulo.setText("The category is "+self.arreglaStrings(self.preguntas[cuestionario.contador]["category"]))
+        
+        self.listaDeRespuestas()
+       
+    def boton1Pulsado(self):
+        self.respuestaElegida=cuestionario.get_boton1()
+        self.cargaPreguntas()
 
-    datos=json.loads(respuesta.content)
+    def boton2Pulsado(self):
+        self.respuestaElegida=cuestionario.get_boton2()
+        self.cargaPreguntas()
 
-# La URL podría devolvernos un JSON, de momento lo voy a controlar con un while.
-    while datos["response_code"] == 1:
-        categoria = int(random.randint(9, 30))
-        API_url = f"https://opentdb.com/api.php?amount={numPreguntas}&category={categoria}"
-        respuesta = requests.get(API_url)
-        datos = json.loads(respuesta.content)
-        print(type(datos))
-    return datos
+    def boton3Pulsado(self):
+        self.respuestaElegida=cuestionario.get_boton3()
+        self.cargaPreguntas()
 
-def calculaResultado(aciertos,errores,numPreguntas):    
-    cadenaResultado=""
-    porcentaje_Acierto = (aciertos/numPreguntas) * 100
-    if porcentaje_Acierto>=50:
-        cadenaResultado+="Well done! You have passed the quiz!\n"
-    else:
-        cadenaResultado+="You lose... Don't worry, you'll get them next time!\n"
+    def boton4Pulsado(self):
+        self.respuestaElegida=cuestionario.get_boton4()
+        self.cargaPreguntas()
 
-    cadenaResultado+=(f"You had {aciertos} correct answers.\n")
-    cadenaResultado+=(f"You had {errores} incorrect answers.\n")
-    cadenaResultado+=(f"Your final score is {porcentaje_Acierto}\n")
-    return cadenaResultado
+    def listaDeRespuestas(self):
+        self.textAreaPregunta.setText(self.arreglaStrings(self.preguntas[cuestionario.contador]["question"])) 
+        cuestionario.set_preguntaActual(self.preguntas[cuestionario.contador]["question"])
+        cuestionario.set_respuestaActual(self.preguntas[cuestionario.contador]["correct_answer"])
+
+        opciones=[]
+        opciones.append(self.preguntas[cuestionario.contador]["correct_answer"])
+        opciones.extend(self.preguntas[cuestionario.contador]["incorrect_answers"])
+        random.shuffle(opciones)
+
+        if(len(opciones)==4):
+            self.BotonRespuesta3.setEnabled(True)
+            self.BotonRespuesta4.setEnabled(True)
+
+        cuestionario.set_boton1(opciones[0])
+        self.BotonRespuesta1.setText(self.arreglaStrings(cuestionario.get_boton1()))
+
+        cuestionario.set_boton2(opciones[1])
+        self.BotonRespuesta2.setText(self.arreglaStrings(cuestionario.get_boton2()))
+        try:
+            cuestionario.set_boton3(opciones[2])
+            self.BotonRespuesta3.setText(self.arreglaStrings(cuestionario.get_boton3()))
+
+            cuestionario.set_boton4(opciones[3])
+            self.BotonRespuesta4.setText(self.arreglaStrings(cuestionario.get_boton4()))
+
+        except:
+            self.BotonRespuesta3.setEnabled(False)
+            self.BotonRespuesta4.setEnabled(False)
+            self.BotonRespuesta3.setText("")
+            self.BotonRespuesta4.setText("")
+            pass
+
+    def cargaPreguntas(self):
+        cuestionario.contador+=1 
+        
+        if self.respuestaElegida==cuestionario.get_respuestaActual():
+            self.aciertos+=1
+        else:
+            self.errores+=1     
+
+        if cuestionario.contador<=cuestionario.get_numPreguntas()-1:
+            self.listaDeRespuestas()
+
+        else:
+            self.BotonRespuesta1.setEnabled(False)
+            self.BotonRespuesta2.setEnabled(False)
+            self.BotonRespuesta3.setEnabled(False)
+            self.BotonRespuesta4.setEnabled(False)
+            self.texAreaResultados.setText(calculaResultado(self.aciertos,self.errores,cuestionario.get_numPreguntas()))
+
+if __name__ == "__main__":
+    app = QtWidgets.QApplication([])
+    window = MainWindow()
+    window.show()
+    app.exec_()
+
