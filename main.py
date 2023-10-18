@@ -4,7 +4,7 @@ import json
 import requests
 # Para generar un número aleatorio
 import random
-# Para poder tener ventana.
+
 
 #Funciones
 def validarRespuesta(self,numero):

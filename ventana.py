@@ -2,6 +2,7 @@ from ventana_ui import *
 from main import *
 from Cuestionario import *
 from PyQt5.QtWidgets import QApplication,QPushButton
+import html
 
 cuestionario=Cuestionario()
 
@@ -26,7 +27,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.BotonRespuesta2.setEnabled(False)
         self.BotonRespuesta3.setEnabled(False)
         self.BotonRespuesta4.setEnabled(False)
-     
+
+    def arreglaStrings(self,string):
+        return html.unescape(string)
 
     def Confirmar(self):
         cuestionario.set_numPreguntas(int(self.spinBoxNumPreguntas.value()))
@@ -38,7 +41,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.BotonRespuesta3.setEnabled(True)
         self.BotonRespuesta4.setEnabled(True)
         self.preguntas=cuestionario.get_datos()["results"]
-        self.eSubTitulo.setText("The category is "+self.preguntas[cuestionario.contador]["category"])
+        self.eSubTitulo.setText("The category is "+self.arreglaStrings(self.preguntas[cuestionario.contador]["category"]))
         
         self.listaDeRespuestas()
        
@@ -59,7 +62,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.cargaPreguntas()
 
     def listaDeRespuestas(self):
-        self.textAreaPregunta.setText(self.preguntas[cuestionario.contador]["question"]) 
+        self.textAreaPregunta.setText(self.arreglaStrings(self.preguntas[cuestionario.contador]["question"])) 
         cuestionario.set_preguntaActual(self.preguntas[cuestionario.contador]["question"])
         cuestionario.set_respuestaActual(self.preguntas[cuestionario.contador]["correct_answer"])
 
@@ -73,16 +76,16 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.BotonRespuesta4.setEnabled(True)
 
         cuestionario.set_boton1(opciones[0])
-        self.BotonRespuesta1.setText(cuestionario.get_boton1())
+        self.BotonRespuesta1.setText(self.arreglaStrings(cuestionario.get_boton1()))
 
         cuestionario.set_boton2(opciones[1])
-        self.BotonRespuesta2.setText(cuestionario.get_boton2())
+        self.BotonRespuesta2.setText(self.arreglaStrings(cuestionario.get_boton2()))
         try:
             cuestionario.set_boton3(opciones[2])
-            self.BotonRespuesta3.setText(cuestionario.get_boton3())
+            self.BotonRespuesta3.setText(self.arreglaStrings(cuestionario.get_boton3()))
 
             cuestionario.set_boton4(opciones[3])
-            self.BotonRespuesta4.setText(cuestionario.get_boton4())
+            self.BotonRespuesta4.setText(self.arreglaStrings(cuestionario.get_boton4()))
 
         except:
             print("No hay más de 2 respuestas")
