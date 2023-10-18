@@ -56,7 +56,6 @@ def llamadaApi(numPreguntas,categoria):
         print(type(datos))
     return datos
 
-
 def calculaResultado(aciertos,errores,numPreguntas):    
     cadenaResultado=""
     porcentaje_Acierto = (aciertos/numPreguntas) * 100

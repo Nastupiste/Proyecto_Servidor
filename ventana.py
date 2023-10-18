@@ -2,7 +2,6 @@ from ventana_ui import *
 from main import *
 from Cuestionario import *
 from PyQt5.QtWidgets import QApplication,QPushButton
-from PyQt5.QtCore import pyqtSlot,pyqtSignal,QEventLoop
 
 cuestionario=Cuestionario()
 
@@ -22,6 +21,11 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.BotonRespuesta2.clicked.connect(self.boton2Pulsado)
         self.BotonRespuesta3.clicked.connect(self.boton3Pulsado)
         self.BotonRespuesta4.clicked.connect(self.boton4Pulsado)
+
+        self.BotonRespuesta1.setEnabled(False)
+        self.BotonRespuesta2.setEnabled(False)
+        self.BotonRespuesta3.setEnabled(False)
+        self.BotonRespuesta4.setEnabled(False)
      
 
     def Confirmar(self):
@@ -29,11 +33,14 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         cuestionario.set_categoria(generaCategoria())
         cuestionario.set_datos(llamadaApi(cuestionario.get_numPreguntas(),cuestionario.get_categoria()))
         self.bConfirmar.setEnabled(False)
+        self.BotonRespuesta1.setEnabled(True)
+        self.BotonRespuesta2.setEnabled(True)
+        self.BotonRespuesta3.setEnabled(True)
+        self.BotonRespuesta4.setEnabled(True)
         self.preguntas=cuestionario.get_datos()["results"]
         self.eSubTitulo.setText("The category is "+self.preguntas[cuestionario.contador]["category"])
         
         self.listaDeRespuestas()
-
        
     def boton1Pulsado(self):
         self.respuestaElegida=cuestionario.get_boton1()
@@ -52,7 +59,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.cargaPreguntas()
 
     def listaDeRespuestas(self):
-
         self.textAreaPregunta.setText(self.preguntas[cuestionario.contador]["question"]) 
         cuestionario.set_preguntaActual(self.preguntas[cuestionario.contador]["question"])
         cuestionario.set_respuestaActual(self.preguntas[cuestionario.contador]["correct_answer"])
@@ -61,6 +67,10 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         opciones.append(self.preguntas[cuestionario.contador]["correct_answer"])
         opciones.extend(self.preguntas[cuestionario.contador]["incorrect_answers"])
         random.shuffle(opciones)
+
+        if(len(opciones)==4):
+            self.BotonRespuesta3.setEnabled(True)
+            self.BotonRespuesta4.setEnabled(True)
 
         cuestionario.set_boton1(opciones[0])
         self.BotonRespuesta1.setText(cuestionario.get_boton1())
@@ -76,40 +86,32 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         except:
             print("No hay más de 2 respuestas")
+            self.BotonRespuesta3.setEnabled(False)
+            self.BotonRespuesta4.setEnabled(False)
+            self.BotonRespuesta3.setText("")
+            self.BotonRespuesta4.setText("")
             pass
 
-
     def cargaPreguntas(self):
-        cuestionario.contador+=1
+        print(cuestionario.contador)
+        print(cuestionario.get_numPreguntas()-1)
+        cuestionario.contador+=1 
         
-        if cuestionario.contador<cuestionario.get_numPreguntas():
-           
-            if self.respuestaElegida==cuestionario.get_respuestaActual():
-                self.aciertos+=1
-            else:
-                self.errores+=1        
-            
+        if self.respuestaElegida==cuestionario.get_respuestaActual():
+            self.aciertos+=1
+        else:
+            self.errores+=1     
+
+        if cuestionario.contador<=cuestionario.get_numPreguntas()-1:
             self.listaDeRespuestas()
 
         else:
             print("He terminado el cuestionario")
+            self.BotonRespuesta1.setEnabled(False)
+            self.BotonRespuesta2.setEnabled(False)
+            self.BotonRespuesta3.setEnabled(False)
+            self.BotonRespuesta4.setEnabled(False)
             self.texAreaResultados.setText(calculaResultado(self.aciertos,self.errores,cuestionario.get_numPreguntas()))
-
-        
-
-        
-
-        
-
-
-
-
-            
-            
-            
-        #https://pybonacci.org/2020/03/27/curso-de-creacion-de-guis-con-qt-capitulo-09-signals-y-slots/
-        #resultadoFinal=calculaResultado(self.aciertos,self.fallos, cuestionario.get_numPreguntas())
-        #self.texAreaResultados.setText(resultadoFinal)
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication([])

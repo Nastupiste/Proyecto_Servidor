@@ -1,23 +1,30 @@
 import requests
 import json
-import base64
+import random
+import html
 
-# Solicitar el JSON a través de una URL (reemplaza la URL con la que desees utilizar)
-url = "https://opentdb.com/api.php?amount=15+&category=9"
-response = requests.get(url)
+API_url=f"https://opentdb.com/api.php?amount=20+&category=9"
+respuesta=requests.get(API_url)
+print(respuesta)
+# Convertimos el resultado de llamada a la API "JSON" a una estructura de datos manejable
 
-# Verificar si la solicitud fue exitosa
-if response.status_code == 200:
-    # Decodificar la respuesta JSON
-    json_data = response.json()
 
-    # Convertir el JSON a una cadena en formato UTF-8
-    json_str = json.dumps(json_data, ensure_ascii=False).encode('utf-8')
 
-    # Codificar la cadena en Base64
-    json_base64 = base64.b64encode(json_str)
+datos=json.loads(respuesta.content)
 
-    # Imprimir el JSON en formato Base64
-    print("JSON en formato Base64:", json_base64.decode('utf-8'))
-else:
-    print("Error al obtener el JSON. Código de estado:", response.status_code)
+# La URL podría devolvernos un JSON, de momento lo voy a controlar con un while.
+
+print(type(datos))
+print(datos)
+
+
+
+
+# String con caracteres HTML entities
+texto_con_entidades = "Este es un ejemplo con &lt;b&gt;HTML entities&lt;/b&gt;."
+
+# Utiliza html.unescape para convertir las entidades HTML en caracteres legibles
+texto_arreglado = html.unescape(texto_con_entidades)
+
+# Imprime el texto arreglado
+print(texto_arreglado)
