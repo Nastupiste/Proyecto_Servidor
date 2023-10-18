@@ -27,7 +27,7 @@
      <set>Qt::AlignCenter</set>
     </property>
     <property name="maximum">
-     <number>51</number>
+     <number>50</number>
     </property>
    </widget>
    <widget class="QPushButton" name="bConfirmar">
@@ -43,12 +43,12 @@
      <string>Aceptar</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="BotonConfRespuesta">
+   <widget class="QPushButton" name="BotonRespuesta1">
     <property name="geometry">
      <rect>
-      <x>1010</x>
-      <y>540</y>
-      <width>101</width>
+      <x>40</x>
+      <y>470</y>
+      <width>1071</width>
       <height>41</height>
      </rect>
     </property>
@@ -56,30 +56,11 @@
      <string>Enviar Respuesta</string>
     </property>
    </widget>
-   <widget class="QSpinBox" name="spinBoxNumRespuesta">
-    <property name="geometry">
-     <rect>
-      <x>940</x>
-      <y>540</y>
-      <width>61</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-    <property name="minimum">
-     <number>1</number>
-    </property>
-    <property name="maximum">
-     <number>4</number>
-    </property>
-   </widget>
    <widget class="QTextBrowser" name="textAreaPregunta">
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>290</y>
+      <y>270</y>
       <width>1071</width>
       <height>192</height>
      </rect>
@@ -90,22 +71,6 @@
       <pointsize>20</pointsize>
       <weight>75</weight>
       <bold>true</bold>
-     </font>
-    </property>
-   </widget>
-   <widget class="QTextBrowser" name="textAreaRespuestas">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>490</y>
-      <width>541</width>
-      <height>192</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Trebuchet MS</family>
-      <pointsize>18</pointsize>
      </font>
     </property>
    </widget>
@@ -165,6 +130,45 @@
     </property>
     <property name="text">
      <string>Categoria</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="BotonRespuesta2">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>520</y>
+      <width>1071</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Enviar Respuesta</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="BotonRespuesta3">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>570</y>
+      <width>1071</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Enviar Respuesta</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="BotonRespuesta4">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>620</y>
+      <width>1071</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Enviar Respuesta</string>
     </property>
    </widget>
   </widget>

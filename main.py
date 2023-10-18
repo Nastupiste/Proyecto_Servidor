@@ -7,7 +7,7 @@ import random
 # Para poder tener ventana.
 
 #Funciones
-def respuestaValida(self,numero):
+def validarRespuesta(self,numero):
     r_incorrecta=True
     while r_incorrecta:
         try:
@@ -82,10 +82,10 @@ def llamadaApi(numPreguntas,categoria):
 # recogemos la respuesta del usuario y realizo la comprobación
 # prevengo que la respuesta no sea un carácter o un número mayor que las opciones disponibles.
 
-def respuestaUsuario(self, opciones, pregunta):
+def gestionarRespuestaUsuario(self, opciones, pregunta):
     respuestaUsuario=-1
     print(opciones)
-    respuestaUsuario=respuestaValida(self,len(opciones))
+    respuestaUsuario=validarRespuesta(self,len(opciones))
     respuestaUsuario-=1
     if opciones[respuestaUsuario]==pregunta["correct_answer"]:
         self.aciertos+=1
