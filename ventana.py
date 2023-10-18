@@ -1,7 +1,6 @@
 from ventana_ui import *
 from main import *
 from Cuestionario import *
-from PyQt5.QtWidgets import QApplication,QPushButton
 import html
 
 cuestionario=Cuestionario()
@@ -17,7 +16,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         
         self.eTitulo.setText("Welcome to the Trivia´s API quest!")
         self.eSubTitulo.setText("How many questions do yo want to answer?\n(from 1 to 50):")
-        self.bConfirmar.clicked.connect(self.Confirmar)
+        self.bConfirmar.clicked.connect(self.confirmar)
         self.BotonRespuesta1.clicked.connect(self.boton1Pulsado)
         self.BotonRespuesta2.clicked.connect(self.boton2Pulsado)
         self.BotonRespuesta3.clicked.connect(self.boton3Pulsado)
@@ -31,8 +30,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def arreglaStrings(self,string):
         return html.unescape(string)
 
-    def Confirmar(self):
+    def confirmar(self):
         cuestionario.set_numPreguntas(int(self.spinBoxNumPreguntas.value()))
+        self.spinBoxNumPreguntas.setEnabled(False)
         cuestionario.set_categoria(generaCategoria())
         cuestionario.set_datos(llamadaApi(cuestionario.get_numPreguntas(),cuestionario.get_categoria()))
         self.bConfirmar.setEnabled(False)
@@ -88,7 +88,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.BotonRespuesta4.setText(self.arreglaStrings(cuestionario.get_boton4()))
 
         except:
-            print("No hay más de 2 respuestas")
             self.BotonRespuesta3.setEnabled(False)
             self.BotonRespuesta4.setEnabled(False)
             self.BotonRespuesta3.setText("")
@@ -96,8 +95,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             pass
 
     def cargaPreguntas(self):
-        print(cuestionario.contador)
-        print(cuestionario.get_numPreguntas()-1)
         cuestionario.contador+=1 
         
         if self.respuestaElegida==cuestionario.get_respuestaActual():
@@ -109,7 +106,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.listaDeRespuestas()
 
         else:
-            print("He terminado el cuestionario")
             self.BotonRespuesta1.setEnabled(False)
             self.BotonRespuesta2.setEnabled(False)
             self.BotonRespuesta3.setEnabled(False)

@@ -57,7 +57,7 @@ class Ui_MainWindow(object):
         self.eTitulo.setFont(font)
         self.eTitulo.setObjectName("eTitulo")
         self.eSubTitulo = QtWidgets.QLabel(self.centralwidget)
-        self.eSubTitulo.setGeometry(QtCore.QRect(40, 200, 881, 81))
+        self.eSubTitulo.setGeometry(QtCore.QRect(40, 150, 881, 81))
         font = QtGui.QFont()
         font.setPointSize(20)
         self.eSubTitulo.setFont(font)

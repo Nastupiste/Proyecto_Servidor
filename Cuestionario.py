@@ -13,8 +13,6 @@ class Cuestionario:
         self.boton3 = ""
         self.boton4 = ""
 
-
-
     def siguientePregunta(self):
         self.contador+=1
 
