@@ -63,7 +63,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def listaDeRespuestas(self):
         self.textAreaPregunta.setText(self.arreglaStrings(self.preguntas[cuestionario.contador]["question"])) 
-        cuestionario.set_preguntaActual(self.preguntas[cuestionario.contador]["question"])
         cuestionario.set_respuestaActual(self.preguntas[cuestionario.contador]["correct_answer"])
 
         opciones=[]
@@ -92,15 +91,17 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.BotonRespuesta4.setEnabled(False)
             self.BotonRespuesta3.setText("")
             self.BotonRespuesta4.setText("")
-            pass
+            
 
     def cargaPreguntas(self):
         cuestionario.contador+=1 
         
         if self.respuestaElegida==cuestionario.get_respuestaActual():
             self.aciertos+=1
+            self.eAcierto.setText("Correct!")
         else:
-            self.errores+=1     
+            self.errores+=1
+            self.eAcierto.setText("Incorrect!")    
 
         if cuestionario.contador<=cuestionario.get_numPreguntas()-1:
             self.listaDeRespuestas()

@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1129, 707)
+        MainWindow.resize(1126, 753)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.spinBoxNumPreguntas = QtWidgets.QSpinBox(self.centralwidget)
@@ -72,6 +72,13 @@ class Ui_MainWindow(object):
         self.BotonRespuesta4 = QtWidgets.QPushButton(self.centralwidget)
         self.BotonRespuesta4.setGeometry(QtCore.QRect(40, 620, 1071, 41))
         self.BotonRespuesta4.setObjectName("BotonRespuesta4")
+        self.eAcierto = QtWidgets.QLabel(self.centralwidget)
+        self.eAcierto.setGeometry(QtCore.QRect(730, 220, 191, 41))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.eAcierto.setFont(font)
+        self.eAcierto.setText("")
+        self.eAcierto.setObjectName("eAcierto")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")

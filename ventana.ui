@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1129</width>
-    <height>707</height>
+    <width>1126</width>
+    <height>753</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -172,6 +172,24 @@
     </property>
     <property name="text">
      <string>Enviar Respuesta</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="eAcierto">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>220</y>
+      <width>191</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>

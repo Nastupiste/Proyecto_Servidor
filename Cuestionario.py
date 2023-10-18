@@ -1,12 +1,11 @@
 class Cuestionario:
-    def __init__(self, numPreguntas=None, categoria=None, datos=None, opciones=None, preguntaActual=None, respuestaActual=None, respuestasIncorrectas=None):
-        self.numPreguntas = numPreguntas
-        self.categoria = categoria
-        self.datos = datos
-        self.preguntaActual = preguntaActual
-        self.respuestaActual = respuestaActual
-        self.respuestasIncorrectas = respuestasIncorrectas
-        self.opciones = opciones
+    def __init__(self):
+        self.numPreguntas = None
+        self.categoria = None
+        self.datos = None
+        self.preguntaActual = None
+        self.respuestaActual = None
+        self.respuestasIncorrectas = None
         self.contador = 0
         self.boton1 = ""
         self.boton2 = ""
@@ -33,12 +32,6 @@ class Cuestionario:
 
     def get_datos(self):
         return self.datos
-        
-    def set_opciones(self, opciones):
-        self.opciones = opciones
-
-    def get_opciones(self):
-        return self.opciones
     
     def set_preguntaActual(self,preguntaActual):
         self.preguntaActual = preguntaActual
