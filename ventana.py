@@ -38,7 +38,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         cuestionario.set_categoria(generaCategoria())
         cuestionario.set_datos(llamadaApi(cuestionario.get_numPreguntas(),cuestionario.get_categoria()))
         self.bConfirmar.setEnabled(False)
-        self.BotonConfRespuesta.setEnabled(True)
         preguntas=cuestionario.get_datos()["results"]
         self.eSubTitulo.setText("The category is "+preguntas[0]["category"])
         self.textAreaPregunta.setText(preguntas[0]["question"])
@@ -46,8 +45,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         cuestionario.set_respuestaActual(preguntas[0]["correct_answer"])
         cuestionario.set_respuestasIncorrectas(preguntas[0]["incorrect_answers"])
        
-        self.BotonRespuesta1.setText(cuestionario.get_respuestaActual)
-        self.BotonRespuesta1.setText(cuestionario.get_respuestasIncorrectas[0])
+        self.BotonRespuesta1.setText(cuestionario.get_respuestaActual())
+        self.BotonRespuesta1.setText(cuestionario.get_respuestasIncorrectas()[0])
 
 
 

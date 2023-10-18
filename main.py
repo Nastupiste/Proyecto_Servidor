@@ -46,13 +46,13 @@ def llamadaApi(numPreguntas,categoria):
     API_url=f"https://opentdb.com/api.php?amount={numPreguntas}+&category={categoria}"
     respuesta=requests.get(API_url)
 # Convertimos el resultado de llamada a la API "JSON" a una estructura de datos manejable
-    datos=json.loads(respuesta.text)
+    datos=json.loads(respuesta.content)
 # La URL podría devolvernos un JSON, de momento lo voy a controlar con un while.
     while datos["response_code"] == 1:
         categoria = int(random.randint(9, 30))
         API_url = f"https://opentdb.com/api.php?amount={numPreguntas}&category={categoria}"
         respuesta = requests.get(API_url)
-        datos = json.loads(respuesta.text)
+        datos = json.loads(respuesta.content)
         print(type(datos))
     return datos
 
