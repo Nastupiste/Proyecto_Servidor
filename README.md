@@ -5,7 +5,7 @@ TRIVIAL´S API
 requisitos previos:
 
 - Tener instalado python3
-- Instalar el los paquetes incluidos en el archivo requirements.text
+- Instalar el los paquetes incluidos en el archivo requirements.text para ello ejecutar el siguiente comando: pip install -r requirements.txt
 
 Proyecto de investigación para la asignatura de Desarrollo de Entorno Servidor para el grado superior de FP DAW.
 
