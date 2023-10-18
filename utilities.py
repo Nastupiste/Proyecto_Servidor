@@ -34,9 +34,9 @@ def calculaResultado(aciertos,errores,numPreguntas):
     cadenaResultado=""
     porcentaje_Acierto = (aciertos/numPreguntas) * 100
     if porcentaje_Acierto>=50:
-        cadenaResultado+="Well done! You have passed the quiz!\n"
+        cadenaResultado+="Well done! You have passed the quiz!\n\n"
     else:
-        cadenaResultado+="You lose... Don't worry, you'll get them next time!\n"
+        cadenaResultado+="You lose... Don't worry, you'll get them next time!\n\n"
 
     cadenaResultado+=(f"You had {aciertos} correct answers.\n")
     cadenaResultado+=(f"You had {errores} incorrect answers.\n")

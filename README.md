@@ -1,9 +1,11 @@
+TRIVIAL´S API
+
 # Proyecto_Servidor
 
 requisitos previos:
 
-- tener instalado python3-tk
-- sudo apt-get install python3-tk
+- Tener instalado python3
+- Instalar el los paquetes incluidos en el archivo requirements.text
 
 Proyecto de investigación para la asignatura de Desarrollo de Entorno Servidor para el grado superior de FP DAW.
 
@@ -17,6 +19,5 @@ Proyecto de investigación para la asignatura de Desarrollo de Entorno Servidor 
 
 3. Volcaremos el contenido en estructuras de datos para poder manipularlos.
 
-- Usando diccionarios, mostraremos las preguntas y las posibles opciones, el usuario responderá y se hará una comprobación,
-
-4. Manipulación de datos; Mostraremos y, si queremos, modificaremos los datos.
+- Usando diccionarios, mostraremos las preguntas y las posibles opciones.
+- El usuario responderá y se hará una comprobación, ofreciéndole un resultado.
