@@ -14,7 +14,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.aciertos=0
         self.errores=0
         
-        self.eTitulo.setText("Welcome to the Trivia´s API quest!")
+        self.eTitulo.setText("Welcome to the Trivial´s API quest!")
         self.eSubTitulo.setText("How many questions do yo want to answer?\n(from 1 to 50):")
         self.bConfirmar.clicked.connect(self.confirmar)
         self.BotonRespuesta1.clicked.connect(self.boton1Pulsado)
