@@ -89,7 +89,7 @@
     <property name="font">
      <font>
       <family>Trebuchet MS</family>
-      <pointsize>14</pointsize>
+      <pointsize>12</pointsize>
       <weight>50</weight>
       <bold>false</bold>
      </font>
@@ -107,9 +107,9 @@
     <property name="font">
      <font>
       <family>Source Code Pro Black</family>
-      <pointsize>26</pointsize>
+      <pointsize>22</pointsize>
       <weight>75</weight>
-      <italic>true</italic>
+      <italic>false</italic>
       <bold>true</bold>
      </font>
     </property>
@@ -177,8 +177,8 @@
    <widget class="QLabel" name="eAcierto">
     <property name="geometry">
      <rect>
-      <x>730</x>
-      <y>220</y>
+      <x>480</x>
+      <y>670</y>
       <width>191</width>
       <height>41</height>
      </rect>
@@ -190,6 +190,9 @@
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>
